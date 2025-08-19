@@ -9,11 +9,9 @@ Summary:	Academic reference management software for researchers
 
 License:	LGPLv2+ and Mendeley and MIT and CC-BY-SA and (CPAL or AGPLv3) and BSD
 URL:		https://www.mendeley.com/
-Source0:	https://desktop-download.mendeley.com/download/linux/%{name}-%{version}-linux-x86_64.tar.bz2
-Source1:	https://desktop-download.mendeley.com/download/linux/%{name}-%{version}-linux-i486.tar.bz2
-Source2:	%{name}.appdata.xml		
-Source3:	%{name}-libreoffice.metainfo.xml
-Patch0:		%{name}-desktopfile.patch
+Source0:		https://desktop-download.mendeley.com/download/linux/%{name}-%{version}-linux-x86_64.tar.bz2
+Source2:		%{name}.appdata.xml		
+Source3:		%{name}-libreoffice.metainfo.xml
 
 # Bundled Libraries
 # share/mendeleydesktop/citationLocales CC-BY-SA 3.0 -> https://github.com/citation-style-language/locales
@@ -95,11 +93,7 @@ from your Mendeley library into OpenOffice documents and generated
 a bibliography automatically.
 
 %prep
-%ifarch i686
-%autosetup -p1 -n %{name}-%{version}-linux-i486
-%else
 %autosetup -p1 -n %{name}-%{version}-linux-x86_64
-%endif
 
 #sed -i 's/Exec=/&env LD_LIBRARY_PATH=\/lib\/mendeleydesktop\/plugins\/platforms /' %%{_bindir}/install-mendeley-link-handler.sh
 
@@ -125,6 +119,7 @@ done
 
 desktop-file-install  --vendor "" --dir %{buildroot}%{_datadir}/applications \
    --add-mime-type=application/pdf --add-mime-type=text/x-bibtex \
+   --set-key=Exec --set-value="%{name} --unix-distro-build %f" \
    share/applications/%{name}.desktop
 
 # AppData
