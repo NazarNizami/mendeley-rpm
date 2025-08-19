@@ -1,0 +1,16 @@
+.
+├── images
+│   ├── mendeley-desktop_0.png
+│   ├── mendeley-desktop_1.png
+│   ├── mendeley-desktop_2.png
+│   └── mendeley-desktop_3.png
+├── Makefile
+├── mendeleydesktop.appdata.xml
+├── mendeleydesktop-libreoffice.metainfo.xml
+├── mendeleydesktop.spec
+├── Mendeley Permission To Redistribute - generic.pdf
+├── Mendeley Permission To Redistribute.pdf
+├── README.md
+└── structure.txt
+
+2 directories, 12 files
